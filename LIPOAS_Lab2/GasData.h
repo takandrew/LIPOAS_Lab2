@@ -15,10 +15,14 @@ public:
 	double gallonQuantity;
 	double totalSum;
 	int mileageBtwnFillings;
-	int mileagePerGallon;
-	int mileagePrice;
-	int dayPrice;
-	int gallonOneTime; //В чем измеряется время?
+	double mileagePerGallon;
+	double mileagePrice;
+	double dayPrice;
+	double gallonTimeInDays; //В чем измеряется время?
 };
 
 vector<GasData> createStarterPackOfData();
+
+void checkDateNumbers(int year, int month, int* daysInMonth, int* daysInYear);
+
+vector<GasData> processGasData(vector<GasData> gotGasData);

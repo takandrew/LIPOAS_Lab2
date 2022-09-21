@@ -74,3 +74,91 @@ vector<GasData> createStarterPackOfData()
 	return dataVector;
 
 }
+
+void checkDateNumbers(int year, int month, int* daysInMonth, int* daysInYear)
+{
+	int daysInFebruary;
+	if (year % 4 == 0)
+	{
+		if (year % 100 == 0)
+		{
+			if (year % 400 == 0)
+			{
+				*daysInYear = 366;
+				daysInFebruary = 29;
+			}
+			else
+			{
+				*daysInYear = 365;
+				daysInFebruary = 28;
+			}
+		}
+		else
+		{
+			*daysInYear = 366;
+			daysInFebruary = 29;
+		}
+	}
+	else
+	{
+		*daysInYear = 365;
+		daysInFebruary = 28;
+	}
+
+	if (month == 1 || month == 3 || month == 5 
+		|| month == 7 || month == 8 || month == 10
+		|| month == 12)
+	{
+		*daysInMonth = 31;
+	}
+	else if (month == 2)
+	{
+		*daysInMonth = daysInFebruary;
+	}
+	else
+	{
+		*daysInMonth = 30;
+	}
+}
+
+vector<GasData> processGasData(vector<GasData> gotGasData)
+{
+	for (int i = 0; i < gotGasData.size(); i++)
+	{
+		if (i == 0 && gotGasData[i].mileageBtwnFillings == -1 
+			&& gotGasData[i].mileagePerGallon == -1
+			&& gotGasData[i].mileagePrice == -1)
+		{
+			gotGasData[i].mileageBtwnFillings = 0;
+		}
+		else
+		{
+			gotGasData[i].mileageBtwnFillings = gotGasData[i].mileage - gotGasData[i - 1].mileage;
+
+			gotGasData[i - 1].mileagePerGallon = gotGasData[i].mileageBtwnFillings / gotGasData[i - 1].gallonQuantity;
+
+			gotGasData[i - 1].mileagePrice = gotGasData[i - 1].mileageBtwnFillings / gotGasData[i - 1].mileagePerGallon; //???
+
+			int daysInMonth;
+			int daysInYear;
+
+			checkDateNumbers(gotGasData[i].year, gotGasData[i].month, &daysInMonth, &daysInYear);
+
+			int daysInPrMonth;
+			int daysInPrYear;
+
+			checkDateNumbers(gotGasData[i-1].year, gotGasData[i-1].month, &daysInPrMonth, &daysInPrYear);
+
+			double timeBtwnFilling = gotGasData[i].day + (daysInMonth - gotGasData[i - 1].day) + daysInMonth * (gotGasData[i].month - gotGasData[i - 1].month) +
+				daysInYear * (gotGasData[i].year - gotGasData[i - 1].year);
+
+			gotGasData[i - 1].dayPrice = timeBtwnFilling / gotGasData[i - 1].totalSum;
+
+			gotGasData[i - 1].gallonTimeInDays = timeBtwnFilling / gotGasData[i - 1].gallonQuantity;
+
+
+		}
+		gotGasData[0].mileageBtwnFillings = -1;
+	}
+	return gotGasData;
+}
