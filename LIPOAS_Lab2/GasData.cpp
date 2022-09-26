@@ -172,6 +172,7 @@ vector<GasData> processGasData(vector<GasData> gotGasData)
 	return gotGasData;
 }
 
+
 void printTable(vector<GasData> gotGasData)
 {
 	int maxColSize = 17;
@@ -206,4 +207,77 @@ void printTable(vector<GasData> gotGasData)
 			gotGasData[j].dayPrice << setw(maxColSize) <<
 			gotGasData[j].gallonTimeInDays << endl;
 	}
+}
+
+void getBrandAvgValues(vector<GasData> gotGasData)
+{
+	vector<string> BrandNames;
+	for (int i = 0; i < gotGasData.size(); i++)
+	{
+		if (std::find(BrandNames.begin(), BrandNames.end(), gotGasData[i].gas_brand) != BrandNames.end()) {
+			/* v contains x */
+		}
+		else {
+			BrandNames.push_back(gotGasData[i].gas_brand);
+		}
+	}
+
+	vector<GasData> brandAvgValues;
+	for (auto element : BrandNames)
+	{
+		GasData record = GasData{ 0, 0, 0, element, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		brandAvgValues.push_back(record);
+	}
+
+	for (int i = 0; i < brandAvgValues.size(); i++)
+	{
+		int counter = 0;
+
+		for (int j = 0; j < gotGasData.size(); j++)
+		{
+			if (brandAvgValues[i].gas_brand == gotGasData[j].gas_brand)
+			{
+				brandAvgValues[i].year += gotGasData[j].year;
+				brandAvgValues[i].month += gotGasData[j].month;
+				brandAvgValues[i].day += gotGasData[j].day;
+				brandAvgValues[i].mileage += gotGasData[j].mileage;
+				brandAvgValues[i].gallonPrice += gotGasData[j].gallonPrice;
+				brandAvgValues[i].gallonQuantity += gotGasData[j].gallonQuantity;
+				brandAvgValues[i].totalSum += gotGasData[j].totalSum;
+				brandAvgValues[i].mileageBtwnFillings += gotGasData[j].mileageBtwnFillings;
+				brandAvgValues[i].mileagePerGallon += gotGasData[j].mileagePerGallon;
+				brandAvgValues[i].mileagePrice += gotGasData[j].mileagePrice;
+				brandAvgValues[i].dayPrice += gotGasData[j].dayPrice;
+				brandAvgValues[i].gallonTimeInDays += gotGasData[j].gallonTimeInDays;
+				counter++;
+			}
+		}
+
+		if (counter != 0)
+		{
+			brandAvgValues[i].year = brandAvgValues[i].year / counter;
+			brandAvgValues[i].month = brandAvgValues[i].month / counter;
+			brandAvgValues[i].day = brandAvgValues[i].day / counter;
+			brandAvgValues[i].mileage = brandAvgValues[i].mileage / counter;
+			brandAvgValues[i].gallonPrice = brandAvgValues[i].gallonPrice / counter;
+			brandAvgValues[i].gallonQuantity = brandAvgValues[i].gallonQuantity / counter;
+			brandAvgValues[i].totalSum = brandAvgValues[i].totalSum / counter;
+			brandAvgValues[i].mileageBtwnFillings = brandAvgValues[i].mileageBtwnFillings / counter;
+			brandAvgValues[i].mileagePerGallon = brandAvgValues[i].mileagePerGallon / counter;
+			brandAvgValues[i].mileagePrice = brandAvgValues[i].mileagePrice / counter;
+			brandAvgValues[i].dayPrice = brandAvgValues[i].dayPrice / counter;
+			brandAvgValues[i].gallonTimeInDays = brandAvgValues[i].gallonTimeInDays / counter;
+
+			brandAvgValues[i].gallonPrice = round_up(brandAvgValues[i].gallonPrice, 2);
+			brandAvgValues[i].gallonQuantity = round_up(brandAvgValues[i].gallonQuantity, 2);
+			brandAvgValues[i].totalSum = round_up(brandAvgValues[i].totalSum, 2);
+			brandAvgValues[i].mileagePerGallon = round_up(brandAvgValues[i].mileagePerGallon, 2);
+			brandAvgValues[i].mileagePrice = round_up(brandAvgValues[i].mileagePrice, 2);
+			brandAvgValues[i].dayPrice = round_up(brandAvgValues[i].dayPrice, 2);
+			brandAvgValues[i].gallonTimeInDays = round_up(brandAvgValues[i].gallonTimeInDays, 2);
+		}
+	}
+
+	//TODO: сообщение о выводе средних данных по маркам
+	printTable(brandAvgValues);
 }

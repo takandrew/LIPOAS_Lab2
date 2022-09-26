@@ -1,5 +1,4 @@
-﻿#include <iostream>
-#include "Menu.h"
+﻿#include "Menu.h"
 #include "Testing.h"
 #include <vector>
 #include "Files.h"
@@ -13,7 +12,10 @@ int main()
 	SetConsoleCP(1251);
 	vector<GasData> testGas = createStarterPackOfData();
 	vector<GasData> processedGas = processGasData(createStarterPackOfData());
-	///TODO: Подчистить за собой надо и дальше делать 
 	printTable(processedGas);
+	cout << endl << endl;
+
+	///TODO: Из алгоритмов осталось только подсчитывать средние значения среди всех за небольшой период (видимо нужно спрашивать у пользователя) и среди всех записей 
+	getBrandAvgValues(processedGas);
 }
 

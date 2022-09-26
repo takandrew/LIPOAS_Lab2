@@ -31,3 +31,5 @@ void checkDateNumbers(int year, int month, int* daysInMonth, int* daysInYear);
 vector<GasData> processGasData(vector<GasData> gotGasData);
 
 void printTable(vector<GasData> gotGasData);
+
+void getBrandAvgValues(vector<GasData> gotGasData);
