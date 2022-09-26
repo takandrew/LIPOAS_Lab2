@@ -172,6 +172,16 @@ vector<GasData> processGasData(vector<GasData> gotGasData)
 	return gotGasData;
 }
 
+string printSymbNTimes(char symb, int nTimes)
+{
+	string neededStr = "";
+	for (int i = 0; i < nTimes; i++)
+	{
+		neededStr += symb;
+	}
+	return neededStr;
+}
+
 
 void printTable(vector<GasData> gotGasData)
 {
@@ -191,6 +201,9 @@ void printTable(vector<GasData> gotGasData)
 		"dayPrice" << setw(maxColSize) <<
 		"galTimeInDays" << endl;
 
+	string nUnderlineInPrint = printSymbNTimes('_', 210);
+	cout << nUnderlineInPrint << endl;
+
 	for (int j = 0; j < gotGasData.size(); j++)
 	{
 		cout << gotGasData[j].year << setw(maxColSize) <<
@@ -207,6 +220,7 @@ void printTable(vector<GasData> gotGasData)
 			gotGasData[j].dayPrice << setw(maxColSize) <<
 			gotGasData[j].gallonTimeInDays << endl;
 	}
+	cout << nUnderlineInPrint << endl;
 }
 
 void getBrandAvgValues(vector<GasData> gotGasData)
