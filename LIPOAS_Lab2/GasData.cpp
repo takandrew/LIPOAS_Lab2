@@ -121,6 +121,11 @@ void checkDateNumbers(int year, int month, int* daysInMonth, int* daysInYear)
 	}
 }
 
+double round_up(double value, int decimal_places) {
+	const double multiplier = std::pow(10.0, decimal_places);
+	return std::ceil(value * multiplier) / multiplier;
+}
+
 vector<GasData> processGasData(vector<GasData> gotGasData)
 {
 	for (int i = 0; i < gotGasData.size(); i++)
@@ -136,8 +141,10 @@ vector<GasData> processGasData(vector<GasData> gotGasData)
 			gotGasData[i].mileageBtwnFillings = gotGasData[i].mileage - gotGasData[i - 1].mileage;
 
 			gotGasData[i - 1].mileagePerGallon = gotGasData[i].mileageBtwnFillings / gotGasData[i - 1].gallonQuantity;
+			gotGasData[i - 1].mileagePerGallon = round_up(gotGasData[i - 1].mileagePerGallon, 2);
 
-			gotGasData[i - 1].mileagePrice = gotGasData[i - 1].mileageBtwnFillings / gotGasData[i - 1].mileagePerGallon; //???
+			gotGasData[i - 1].mileagePrice = gotGasData[i - 1].mileageBtwnFillings / gotGasData[i - 1].mileagePerGallon;
+			gotGasData[i - 1].mileagePrice = round_up(gotGasData[i - 1].mileagePrice, 2);
 
 			int daysInMonth;
 			int daysInYear;
@@ -153,12 +160,50 @@ vector<GasData> processGasData(vector<GasData> gotGasData)
 				daysInYear * (gotGasData[i].year - gotGasData[i - 1].year);
 
 			gotGasData[i - 1].dayPrice = timeBtwnFilling / gotGasData[i - 1].totalSum;
+			gotGasData[i - 1].dayPrice = round_up(gotGasData[i - 1].dayPrice, 2);
 
 			gotGasData[i - 1].gallonTimeInDays = timeBtwnFilling / gotGasData[i - 1].gallonQuantity;
+			gotGasData[i - 1].gallonTimeInDays = round_up(gotGasData[i - 1].gallonTimeInDays, 2);
 
 
 		}
 		gotGasData[0].mileageBtwnFillings = -1;
 	}
 	return gotGasData;
+}
+
+void printTable(vector<GasData> gotGasData)
+{
+	int maxColSize = 17;
+
+	cout << "year" << setw(maxColSize) <<
+		"month" << setw(maxColSize) <<
+		"day" << setw(maxColSize) <<
+		"gas brand" << setw(maxColSize) <<
+		"mileage" << setw(maxColSize) <<
+		"gallonPrice" << setw(maxColSize) <<
+		"gallonQuantity" << setw(maxColSize) <<
+		"totalSum" << setw(maxColSize) <<
+		"milBtwnFillings" << setw(maxColSize) <<
+		"milPerGallon" << setw(maxColSize) <<
+		"milPrice" << setw(maxColSize) <<
+		"dayPrice" << setw(maxColSize) <<
+		"galTimeInDays" << endl;
+
+	for (int j = 0; j < gotGasData.size(); j++)
+	{
+		cout << gotGasData[j].year << setw(maxColSize) <<
+			gotGasData[j].month << setw(maxColSize) <<
+			gotGasData[j].day << setw(maxColSize) <<
+			gotGasData[j].gas_brand << setw(maxColSize) <<
+			gotGasData[j].mileage << setw(maxColSize) <<
+			gotGasData[j].gallonPrice << setw(maxColSize) <<
+			gotGasData[j].gallonQuantity << setw(maxColSize) <<
+			gotGasData[j].totalSum << setw(maxColSize) <<
+			gotGasData[j].mileageBtwnFillings << setw(maxColSize) <<
+			gotGasData[j].mileagePerGallon << setw(maxColSize) <<
+			gotGasData[j].mileagePrice << setw(maxColSize) <<
+			gotGasData[j].dayPrice << setw(maxColSize) <<
+			gotGasData[j].gallonTimeInDays << endl;
+	}
 }
