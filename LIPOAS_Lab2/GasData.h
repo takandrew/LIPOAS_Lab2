@@ -28,6 +28,8 @@ vector<GasData> createStarterPackOfData();
 
 void checkDateNumbers(int year, int month, int* daysInMonth, int* daysInYear);
 
+vector<GasData> processAvgData(vector<GasData> gotGasData, int neededYear, int neededMonth);
+
 vector<GasData> processGasData(vector<GasData> gotGasData);
 
 void printTable(vector<GasData> gotGasData);

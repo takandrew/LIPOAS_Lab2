@@ -15,7 +15,12 @@ int main()
 	printTable(processedGas);
 	cout << endl << endl;
 
-	///TODO: Из алгоритмов осталось только подсчитывать средние значения среди всех за небольшой период (видимо нужно спрашивать у пользователя) и среди всех записей 
+	int neededYear = 1974;
+	int neededMonth = 9;
+	cout << "Средние значения за " << neededMonth << " месяц " << neededYear << " года и по всем данным:" << endl << endl;
+	printTable(processAvgData(processedGas, neededYear, neededMonth));
+	cout << endl << endl; 
+	
 	getBrandAvgValues(processedGas);
 }
 
