@@ -76,18 +76,20 @@ bool MenuExportData() {
 }
 
 // Меню выбора расположения исходных данных 
-bool MenuImportData() {
-	enum MenuImportDataCase { Yes = 1, No };
+int MenuImportData() {
+	enum MenuImportDataCase { File = 1, Manual, FromBook };
 	int variant;
 	cout << endl;
 	cout << "Загрузить исходные данные из файла?" << endl;
 	cout << "1. Загрузить исходные данные из файла." << endl;
 	cout << "2. Ввести исходные данные самостоятельно." << endl;
+	cout << "3. Загрузить исходные данные из книги «Этюды для программистов»." << endl;
 	cout << endl;
 	variant = NumInInt();
 	switch (variant) {
-	case Yes: return true;
-	case No: return false;
+	case File: return File;
+	case Manual: return Manual;
+	case FromBook: return FromBook;
 	default: {cout << "Введено неправильное значение." << endl; return MenuImportData(); }
 	}
 }

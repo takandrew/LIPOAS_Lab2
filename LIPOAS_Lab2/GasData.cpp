@@ -296,7 +296,7 @@ void printTable(vector<GasData> gotGasData)
 	cout << nUnderlineInPrint << endl;
 }
 
-void getBrandAvgValues(vector<GasData> gotGasData)
+vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 {
 	vector<string> BrandNames;
 	for (int i = 0; i < gotGasData.size(); i++)
@@ -358,6 +358,73 @@ void getBrandAvgValues(vector<GasData> gotGasData)
 			brandAvgValues[i].gallonTimeInDays = round_up(brandAvgValues[i].gallonTimeInDays, 2);
 		}
 	}
-	cout << "Средние значения по маркам:" << endl << endl;
-	printTable(brandAvgValues);
+	return brandAvgValues;
+}
+
+vector<string> FullGasDataProcess(vector<GasData> gasData)
+{
+	int neededYear;
+	int neededMonth;
+	bool isDateIncorrect = true;
+	while (isDateIncorrect)
+	{
+		cout << "Введите год и месяц, данные которых необходимо усреднить:" << endl;
+		cout << "Введите год:" << endl;
+		neededYear = NumInInt();
+		cout << "Введите месяц" << endl;
+		neededMonth = NumInInt();
+		if (neededMonth <= 0 || neededMonth > 12)
+		{
+			isDateIncorrect = true;
+			cout << endl << "Месяц введен некорректно. Пожалуйста, введите данные заново" << endl;
+		}
+		else
+			isDateIncorrect = false;
+	}
+
+	vector<GasData> processedGasData;
+	vector<GasData> avgGasData;
+	vector<GasData> avgBrandGasData;
+
+	processedGasData = processGasData(gasData);
+	avgGasData = processAvgData(processedGasData, neededYear, neededMonth);
+	avgBrandGasData = getBrandAvgValues(processedGasData);
+
+	vector<string> text;
+	vector<string> gasDataText;
+	vector<string> processedGasDataText;
+	vector<string> processedAvgDataText;
+	vector<string> avgBrandGasDataText;
+
+	//TODO: НЕ РАБОТАЕТ!!!!
+	gasDataText = GetTextFromGasData(gasData);
+	processedGasDataText = GetTextFromGasData(processedGasData);
+	processedAvgDataText = GetTextFromGasData(avgGasData);
+	avgBrandGasDataText = GetTextFromGasData(avgBrandGasData);
+
+	text.push_back("Исходные данные:");
+	for (int i = 0; i < gasDataText.size(); i++)
+	{
+		text.push_back(gasDataText[i]);
+	}
+	text.push_back("");
+	text.push_back("Обработанные данные:");
+	for (int i = 0; i < processedGasDataText.size(); i++)
+	{
+		text.push_back(processedGasDataText[i]);
+	}
+	text.push_back("");
+	string aboutAvgText = "Средние значения за " + to_string(neededYear) + " год " + to_string(neededMonth) + " месяц и за все время";
+	text.push_back(aboutAvgText);
+	for (int i = 0; i < processedAvgDataText.size(); i++)
+	{
+		text.push_back(processedAvgDataText[i]);
+	}
+	text.push_back("");
+	text.push_back("Средние значения по брендам бензина:");
+	for (int i = 0; i < avgBrandGasDataText.size(); i++)
+	{
+		text.push_back(avgBrandGasDataText[i]);
+	}
+	return text;
 }

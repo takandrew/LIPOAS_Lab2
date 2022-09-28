@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Files.cpp" />
     <ClCompile Include="GasData.cpp" />
+    <ClCompile Include="InputData.cpp" />
     <ClCompile Include="LIPOAS_Lab2.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Testing.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="Files.h" />
     <ClInclude Include="GasData.h" />
+    <ClInclude Include="InputData.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Testing.h" />
   </ItemGroup>

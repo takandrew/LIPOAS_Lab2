@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include "Menu.h"
+#include "Files.h"
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -34,4 +36,6 @@ vector<GasData> processGasData(vector<GasData> gotGasData);
 
 void printTable(vector<GasData> gotGasData);
 
-void getBrandAvgValues(vector<GasData> gotGasData);
+vector<GasData> getBrandAvgValues(vector<GasData> gotGasData);
+
+vector<string> FullGasDataProcess(vector<GasData> gasData);

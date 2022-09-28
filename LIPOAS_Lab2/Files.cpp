@@ -1,5 +1,23 @@
 ﻿#include "Files.h"
 
+vector<string> GetTextFromGasData(vector<GasData> gotGasData)
+{
+	vector<string> text;
+	for (int i = 0; i < gotGasData.size(); i++)
+	{
+		string textNote = to_string(gotGasData[i].year) + " " + to_string(gotGasData[i].month) +
+			" " + to_string(gotGasData[i].day) + " " + gotGasData[i].gas_brand +
+			" " + to_string(gotGasData[i].mileage) + " " + to_string(gotGasData[i].gallonPrice) +
+			" " + to_string(gotGasData[i].gallonQuantity) + " " + to_string(gotGasData[i].totalSum) +
+			" " + to_string(gotGasData[i].mileageBtwnFillings) + " " + to_string(gotGasData[i].mileagePerGallon) +
+			" " + to_string(gotGasData[i].mileagePrice) + " " + to_string(gotGasData[i].dayPrice) +
+			" " + to_string(gotGasData[i].gallonTimeInDays);
+		text.push_back(textNote);
+	}
+
+	return text;
+}
+
 // Проверка существования файла
 bool FileExist(string path) {
 	USES_CONVERSION;
@@ -113,13 +131,13 @@ bool FileOpenChecking(string path) {
 }
 
 // Вывод текста в файл
-void FileWriteData(vector <string>& text) {
+void FileWriteData(vector <string> text) {
 	unsigned int i;
 	ofstream fout;
 	string path;
-	bool readOnlyCheck = 0;
-	bool fileCorrectCheck = 0;
-	bool fileOpenCheck = 0;
+	bool readOnlyCheck = false;
+	bool fileCorrectCheck = false;
+	bool fileOpenCheck = false;
 	cout << endl << "Введите путь к файлу:" << endl;
 	cin >> path;
 	readOnlyCheck = ReadOnlyChecking(path);
