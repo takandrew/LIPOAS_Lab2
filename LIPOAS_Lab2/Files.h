@@ -16,7 +16,7 @@
 using namespace std::experimental::filesystem;
 using namespace std;
 
-vector<string> GetTextFromGasData(vector<GasData> gotGasData);
+
 bool FileExist(string path); // Проверка существования файла
 void FileWriteData(vector<string> text); // Вывод текста в файл
 bool ReadOnlyChecking(string path); //Функция, проверяющая, является ли файл доступным только для чтения. Принимает путь к файлу.

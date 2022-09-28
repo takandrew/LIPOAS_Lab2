@@ -39,3 +39,5 @@ void printTable(vector<GasData> gotGasData);
 vector<GasData> getBrandAvgValues(vector<GasData> gotGasData);
 
 vector<string> FullGasDataProcess(vector<GasData> gasData);
+
+vector<string> GetTextFromGasData(vector<GasData> gotGasData);

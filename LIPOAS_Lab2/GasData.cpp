@@ -126,6 +126,24 @@ double round_up(double value, int decimal_places) {
 	return std::ceil(value * multiplier) / multiplier;
 }
 
+vector<string> GetTextFromGasData(vector<GasData> gotGasData)
+{
+	vector<string> text;
+	for (int i = 0; i < gotGasData.size(); i++)
+	{
+		string textNote = to_string(gotGasData[i].year) + " " + to_string(gotGasData[i].month) +
+			" " + to_string(gotGasData[i].day) + " " + gotGasData[i].gas_brand +
+			" " + to_string(gotGasData[i].mileage) + " " + to_string(gotGasData[i].gallonPrice) +
+			" " + to_string(gotGasData[i].gallonQuantity) + " " + to_string(gotGasData[i].totalSum) +
+			" " + to_string(gotGasData[i].mileageBtwnFillings) + " " + to_string(gotGasData[i].mileagePerGallon) +
+			" " + to_string(gotGasData[i].mileagePrice) + " " + to_string(gotGasData[i].dayPrice) +
+			" " + to_string(gotGasData[i].gallonTimeInDays);
+		text.push_back(textNote);
+	}
+
+	return text;
+}
+
 vector<GasData> processAvgData(vector<GasData> gotGasData, int neededYear, int neededMonth)
 {
 	vector<GasData> avgData;
@@ -396,7 +414,7 @@ vector<string> FullGasDataProcess(vector<GasData> gasData)
 	vector<string> processedAvgDataText;
 	vector<string> avgBrandGasDataText;
 
-	//TODO: НЕ РАБОТАЕТ!!!!
+	//TODO: Починили за счет переноса GetTextFromGasData из Files в GasData 
 	gasDataText = GetTextFromGasData(gasData);
 	processedGasDataText = GetTextFromGasData(processedGasData);
 	processedAvgDataText = GetTextFromGasData(avgGasData);
