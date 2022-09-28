@@ -36,6 +36,7 @@ int main()
 			printTable(gasData);
 		}
 
+		//TODO: НЕ РАБОТАЕТ!!!!!!
 		vector<string> text = FullGasDataProcess(gasData);
 
 		if (MenuResult() == true) // Возможность выбора сохранения результата программы в файл
