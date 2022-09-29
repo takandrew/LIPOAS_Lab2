@@ -5,7 +5,7 @@ vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 	vector<GasData> gotGasData;
 	for (int i = 0; i < text.size(); i++)
 	{
-		GasData gotData = GasData{ -2,-2,-2,"-2",-2,-2,-2,-2,-2,-2,-2,-2,-2 };
+		GasData gotData = GasData{ -2,-2,-2,"-2",-2,-2,-2,-2,-1,-1,-1,-1,-1 };
 
 		string currentNote = "";
 		text[i].push_back(' ');
@@ -65,31 +65,6 @@ vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 							gotData.totalSum = stod(currentNote);
 							currentNote = "";
 						}
-						else if (gotData.mileageBtwnFillings == -2)
-						{
-							gotData.mileageBtwnFillings = stoi(currentNote);
-							currentNote = "";
-						}
-						else if (gotData.mileagePerGallon == -2)
-						{
-							gotData.mileagePerGallon = stod(currentNote);
-							currentNote = "";
-						}
-						else if (gotData.mileagePrice == -2)
-						{
-							gotData.mileagePrice = stod(currentNote);
-							currentNote = "";
-						}
-						else if (gotData.dayPrice == -2)
-						{
-							gotData.dayPrice = stod(currentNote);
-							currentNote = "";
-						}
-						else if (gotData.gallonTimeInDays == -2)
-						{
-							gotData.gallonTimeInDays = stod(currentNote);
-							currentNote = "";
-						}
 					}
 					catch (...)
 					{
@@ -111,19 +86,12 @@ vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 			|| element.mileage == -2
 			|| element.gallonPrice == -2
 			|| element.gallonQuantity == -2
-			|| element.totalSum == -2
-			|| element.mileageBtwnFillings == -2
-			|| element.mileagePerGallon == -2
-			|| element.mileagePrice == -2
-			|| element.dayPrice == -2
-			|| element.gallonTimeInDays == -2)
+			|| element.totalSum == -2)
 		{
 			*isIncorrectData = true;
 			cout << "Полученные из указанного файла данные некорректны. Пожалуйста, попробуйте еще раз." << endl
 				<< "Данные должны быть представлены в следующем виде:" << endl
-				<< "год месяц день маркаБензина пробег ценаГаллона количествоГаллонов" << endl
-				<< "общаяСтоимость пробегМеждуЗаправками пробегНаОдинГаллон стоимостьПробегаВОднуМилю" << endl
-				<< "стоимостьОдногоДня времяРасходованияОдногоГаллона." << endl
+				<< "год месяц день маркаБензина пробег ценаГаллона количествоГаллонов общаяСтоимость" << endl
 				<< "Данные об одной записи должны быть записаны в одну строчку и не должны содержать" << endl
 				<< "значения: «-2», так как оно зарезервировано в программе для служебных целей." << endl
 				<< "Если конкретного значения у какой-либо характеристики нет, то следует его записать в виде «-1»" << endl
@@ -145,6 +113,8 @@ vector<GasData> textInputFile()
 	{
 		ifstream fin;
 		int fileReadCorrectCheck = 0;
+		cout << "Обратите внимание, что для корректного чтения данных дробная часть"
+			<< " в числах должна отделяться запятой, а не точкой." << endl;
 		cout << "Введите путь к файлу:" << endl;
 		string path;
 		cin >> path;
@@ -207,6 +177,12 @@ vector<GasData> textInputManual()
 	bool isIncorrectData = true;
 	while (isIncorrectData)
 	{
+		cout << endl << "Данные должны быть представлены в следующем виде:" << endl
+			<< "год месяц день маркаБензина пробег ценаГаллона количествоГаллонов общаяСтоимость" << endl
+			<< "Данные об одной записи должны быть записаны в одну строчку и не должны содержать" << endl
+			<< "значения: «-2», так как оно зарезервировано в программе для служебных целей." << endl
+			<< "Если конкретного значения у какой-либо характеристики нет, то следует его записать в виде «-1»" << endl
+			<< "Данные о новой записи следует записывать с новой строчки." << endl;
 		cout << "Введите текст:" << endl;
 		cout << "Чтобы завершить ввод текста, нажмите Enter дважды." << endl;
 		string buffer = "\0";

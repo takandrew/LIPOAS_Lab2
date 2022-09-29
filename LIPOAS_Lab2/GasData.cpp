@@ -190,24 +190,26 @@ vector<GasData> processAvgData(vector<GasData> gotGasData, int neededYear, int n
 			avgData[i].year = neededYear;
 			avgData[i].month = neededMonth;
 		}
+		if (counter != 0)
+		{
+			avgData[i].mileage /= counter;
+			avgData[i].gallonPrice /= counter;
+			avgData[i].gallonQuantity /= counter;
+			avgData[i].totalSum /= counter;
+			avgData[i].mileageBtwnFillings /= counter;
+			avgData[i].mileagePerGallon /= counter;
+			avgData[i].mileagePrice /= counter;
+			avgData[i].dayPrice /= counter;
+			avgData[i].gallonTimeInDays /= counter;
 
-		avgData[i].mileage /= counter;
-		avgData[i].gallonPrice /= counter;
-		avgData[i].gallonQuantity /= counter;
-		avgData[i].totalSum /= counter;
-		avgData[i].mileageBtwnFillings /= counter;
-		avgData[i].mileagePerGallon /= counter;
-		avgData[i].mileagePrice /= counter;
-		avgData[i].dayPrice /= counter;
-		avgData[i].gallonTimeInDays /= counter;
-				
-		avgData[i].gallonPrice = round_up(avgData[i].gallonPrice, 2);
-		avgData[i].gallonQuantity = round_up(avgData[i].gallonQuantity, 2);
-		avgData[i].totalSum = round_up(avgData[i].totalSum, 2);
-		avgData[i].mileagePerGallon = round_up(avgData[i].mileagePerGallon, 2);
-		avgData[i].mileagePrice = round_up(avgData[i].mileagePrice, 2);
-		avgData[i].dayPrice = round_up(avgData[i].dayPrice, 2);
-		avgData[i].gallonTimeInDays = round_up(avgData[i].gallonTimeInDays, 2);
+			avgData[i].gallonPrice = round_up(avgData[i].gallonPrice, 2);
+			avgData[i].gallonQuantity = round_up(avgData[i].gallonQuantity, 2);
+			avgData[i].totalSum = round_up(avgData[i].totalSum, 2);
+			avgData[i].mileagePerGallon = round_up(avgData[i].mileagePerGallon, 2);
+			avgData[i].mileagePrice = round_up(avgData[i].mileagePrice, 2);
+			avgData[i].dayPrice = round_up(avgData[i].dayPrice, 2);
+			avgData[i].gallonTimeInDays = round_up(avgData[i].gallonTimeInDays, 2);
+		}
 	}
 	
 
@@ -218,43 +220,40 @@ vector<GasData> processGasData(vector<GasData> gotGasData)
 {
 	for (int i = 0; i < gotGasData.size(); i++)
 	{
-		if (i == 0 && gotGasData[i].mileageBtwnFillings == -1 
-			&& gotGasData[i].mileagePerGallon == -1
-			&& gotGasData[i].mileagePrice == -1)
+		if (i == 0)
 		{
-			gotGasData[i].mileageBtwnFillings = 0;
+			if (gotGasData.size() == 1)
+				break;
+			else
+				continue;
 		}
-		else
-		{
-			gotGasData[i-1].mileageBtwnFillings = gotGasData[i].mileage - gotGasData[i - 1].mileage;
 
-			gotGasData[i - 1].mileagePerGallon = gotGasData[i-1].mileageBtwnFillings / gotGasData[i - 1].gallonQuantity;
-			gotGasData[i - 1].mileagePerGallon = round_up(gotGasData[i - 1].mileagePerGallon, 2);
+		gotGasData[i - 1].mileageBtwnFillings = gotGasData[i].mileage - gotGasData[i - 1].mileage;
 
-			gotGasData[i - 1].mileagePrice = gotGasData[i-1].mileageBtwnFillings / gotGasData[i - 1].mileagePerGallon;
-			gotGasData[i - 1].mileagePrice = round_up(gotGasData[i - 1].mileagePrice, 2);
+		gotGasData[i - 1].mileagePerGallon = gotGasData[i - 1].mileageBtwnFillings / gotGasData[i - 1].gallonQuantity;
+		gotGasData[i - 1].mileagePerGallon = round_up(gotGasData[i - 1].mileagePerGallon, 2);
 
-			int daysInMonth;
-			int daysInYear;
+		gotGasData[i - 1].mileagePrice = gotGasData[i - 1].mileageBtwnFillings / gotGasData[i - 1].mileagePerGallon;
+		gotGasData[i - 1].mileagePrice = round_up(gotGasData[i - 1].mileagePrice, 2);
 
-			checkDateNumbers(gotGasData[i].year, gotGasData[i].month, &daysInMonth, &daysInYear);
+		int daysInMonth;
+		int daysInYear;
 
-			int daysInPrMonth;
-			int daysInPrYear;
+		checkDateNumbers(gotGasData[i].year, gotGasData[i].month, &daysInMonth, &daysInYear);
 
-			checkDateNumbers(gotGasData[i-1].year, gotGasData[i-1].month, &daysInPrMonth, &daysInPrYear);
+		int daysInPrMonth;
+		int daysInPrYear;
 
-			double timeBtwnFilling = gotGasData[i].day + (daysInMonth - gotGasData[i - 1].day) + daysInMonth * (gotGasData[i].month - gotGasData[i - 1].month) +
-				daysInYear * (gotGasData[i].year - gotGasData[i - 1].year);
+		checkDateNumbers(gotGasData[i - 1].year, gotGasData[i - 1].month, &daysInPrMonth, &daysInPrYear);
 
-			gotGasData[i - 1].dayPrice = timeBtwnFilling / gotGasData[i - 1].totalSum;
-			gotGasData[i - 1].dayPrice = round_up(gotGasData[i - 1].dayPrice, 2);
+		double timeBtwnFilling = gotGasData[i].day + (daysInMonth - gotGasData[i - 1].day) + daysInMonth * (gotGasData[i].month - gotGasData[i - 1].month) +
+			daysInYear * (gotGasData[i].year - gotGasData[i - 1].year);
 
-			gotGasData[i - 1].gallonTimeInDays = timeBtwnFilling / gotGasData[i - 1].gallonQuantity;
-			gotGasData[i - 1].gallonTimeInDays = round_up(gotGasData[i - 1].gallonTimeInDays, 2);
+		gotGasData[i - 1].dayPrice = timeBtwnFilling / gotGasData[i - 1].totalSum;
+		gotGasData[i - 1].dayPrice = round_up(gotGasData[i - 1].dayPrice, 2);
 
-
-		}
+		gotGasData[i - 1].gallonTimeInDays = timeBtwnFilling / gotGasData[i - 1].gallonQuantity;
+		gotGasData[i - 1].gallonTimeInDays = round_up(gotGasData[i - 1].gallonTimeInDays, 2);
 	}
 	return gotGasData;
 }
@@ -379,7 +378,7 @@ vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 	return brandAvgValues;
 }
 
-vector<string> FullGasDataProcess(vector<GasData> gasData)
+vector<string> FullGasDataProcess(vector<GasData> gasData, bool needCout)
 {
 	int neededYear;
 	int neededMonth;
@@ -414,7 +413,6 @@ vector<string> FullGasDataProcess(vector<GasData> gasData)
 	vector<string> processedAvgDataText;
 	vector<string> avgBrandGasDataText;
 
-	//TODO: Починили за счет переноса GetTextFromGasData из Files в GasData 
 	gasDataText = GetTextFromGasData(gasData);
 	processedGasDataText = GetTextFromGasData(processedGasData);
 	processedAvgDataText = GetTextFromGasData(avgGasData);
@@ -444,5 +442,18 @@ vector<string> FullGasDataProcess(vector<GasData> gasData)
 	{
 		text.push_back(avgBrandGasDataText[i]);
 	}
+
+	if (needCout)
+	{
+		cout << endl << "Исходные данные:" << endl << endl;
+		printTable(gasData);
+		cout << endl << "Преобразованные данные:" << endl << endl;
+		printTable(processedGasData);
+		cout << endl << "Средние значения за " << to_string(neededYear) << " год " << to_string(neededMonth) << " месяц и за все время:" << endl << endl;
+		printTable(avgGasData);
+		cout << endl << "Средние значения по брендам бензина:" << endl << endl;
+		printTable(avgBrandGasData);
+	}
+
 	return text;
 }
