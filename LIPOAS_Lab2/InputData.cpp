@@ -29,16 +29,37 @@ vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 						{
 							gotData.year = stoi(currentNote);
 							currentNote = "";
+							if (gotData.year != -1 && gotData.year <= 0)
+							{
+								*isIncorrectData = true;
+								cout << "Год не может быть отрицательным либо нулевым (для неопределенного значения используйте -1)" << endl;
+								break;
+							}
 						}
 						else if (gotData.month == -2)
 						{
 							gotData.month = stoi(currentNote);
 							currentNote = "";
+							if (gotData.month != -1 && (gotData.month <= 0 || gotData.month > 12))
+							{
+								*isIncorrectData = true;
+								cout << "Значение месяца некорректно (для неопределенного значения используйте -1)" << endl;
+								break;
+							}
 						}
 						else if (gotData.day == -2)
 						{
 							gotData.day = stoi(currentNote);
 							currentNote = "";
+							int daysInMonth = -1;
+							int daysInYear = -1;
+							checkDateNumbers(gotData.year, gotData.month, &daysInMonth, &daysInYear);
+							if (gotData.day != -1 && (gotData.day <= 0 || gotData.day > daysInMonth))
+							{
+								*isIncorrectData = true;
+								cout << "Значение дня некорректно (для неопределенного значения используйте -1)" << endl;
+								break;
+							}
 						}
 						else if (gotData.gas_brand == "-2")
 						{
@@ -89,7 +110,7 @@ vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 			|| element.totalSum == -2)
 		{
 			*isIncorrectData = true;
-			cout << "Полученные из указанного файла данные некорректны. Пожалуйста, попробуйте еще раз." << endl
+			cout << "Полученные данные некорректны. Пожалуйста, попробуйте еще раз." << endl
 				<< "Данные должны быть представлены в следующем виде:" << endl
 				<< "год месяц день маркаБензина пробег ценаГаллона количествоГаллонов общаяСтоимость" << endl
 				<< "Данные об одной записи должны быть записаны в одну строчку и не должны содержать" << endl
@@ -158,10 +179,10 @@ vector<GasData> textInputFile()
 
 		if (isIncorrectData)
 		{
-			int gotGasDataSize = gotGasData.size();
+			int gotGasDataSize = (int)gotGasData.size();
 			for (int i = 0; i < gotGasDataSize; i++)
 				gotGasData.pop_back();
-			int textSize = text.size();
+			int textSize = (int)text.size();
 			for (int i = 0; i < textSize; i++)
 				text.pop_back();
 		}
@@ -210,10 +231,10 @@ vector<GasData> textInputManual()
 
 		if (isIncorrectData)
 		{
-			int gotGasDataSize = gotGasData.size();
+			int gotGasDataSize = (int)gotGasData.size();
 			for (int i = 0; i < gotGasDataSize; i++)
 				gotGasData.pop_back();
-			int textSize = text.size();
+			int textSize = (int)text.size();
 			for (int i = 0; i < textSize; i++)
 				text.pop_back();
 		}

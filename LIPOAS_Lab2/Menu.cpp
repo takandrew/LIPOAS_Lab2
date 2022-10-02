@@ -35,7 +35,7 @@ bool Menu() {
 	switch (variant) {
 	case again: return true;
 	case info: {cout << endl; Greeting(); return Menu(); }
-	case testing: {/*Testing()*/; return Menu(); }
+	case testing: {Testing(); return Menu(); }
 	case finish: {cout << "Программа завершена." << endl; return false; }
 	default: {cout << "Введено неправильное значение." << endl; return Menu(); }
 	}

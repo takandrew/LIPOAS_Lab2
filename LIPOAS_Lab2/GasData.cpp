@@ -319,7 +319,7 @@ vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 	for (int i = 0; i < gotGasData.size(); i++)
 	{
 		if (std::find(BrandNames.begin(), BrandNames.end(), gotGasData[i].gas_brand) != BrandNames.end()) {
-			/* v contains x */
+			/* contains */
 		}
 		else {
 			BrandNames.push_back(gotGasData[i].gas_brand);
@@ -380,14 +380,20 @@ vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 
 vector<string> FullGasDataProcess(vector<GasData> gasData, bool needCout)
 {
-	int neededYear;
-	int neededMonth;
+	int neededYear = -1;
+	int neededMonth = -1;
 	bool isDateIncorrect = true;
 	while (isDateIncorrect)
 	{
 		cout << "Введите год и месяц, данные которых необходимо усреднить:" << endl;
 		cout << "Введите год:" << endl;
 		neededYear = NumInInt();
+		if (neededYear <= 0)
+		{
+			isDateIncorrect = true;
+			cout << endl << "Год введен некорректно. Пожалуйста, введите данные заново" << endl;
+			continue;
+		}
 		cout << "Введите месяц" << endl;
 		neededMonth = NumInInt();
 		if (neededMonth <= 0 || neededMonth > 12)

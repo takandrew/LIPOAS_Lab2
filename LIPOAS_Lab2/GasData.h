@@ -30,9 +30,13 @@ vector<GasData> createStarterPackOfData();
 
 void checkDateNumbers(int year, int month, int* daysInMonth, int* daysInYear);
 
+double round_up(double value, int decimal_places);
+
 vector<GasData> processAvgData(vector<GasData> gotGasData, int neededYear, int neededMonth);
 
 vector<GasData> processGasData(vector<GasData> gotGasData);
+
+string printSymbNTimes(char symb, int nTimes);
 
 void printTable(vector<GasData> gotGasData);
 

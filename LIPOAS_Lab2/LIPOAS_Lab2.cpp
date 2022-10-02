@@ -10,6 +10,7 @@ int main()
 {
 	setlocale(LC_ALL, "RU");
 	Greeting();
+	Testing();
 	SetConsoleCP(1251);
 	while (true) {
 		vector<GasData> gasData;
