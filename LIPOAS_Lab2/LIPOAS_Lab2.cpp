@@ -37,11 +37,11 @@ int main()
 			printTable(gasData);
 		}
 
-		vector<string> text = FullGasDataProcess(gasData, true);
+		vector<string> result = FullGasDataProcess(gasData, true);
 
 		if (MenuResult() == true) // Возможность выбора сохранения результата программы в файл
 		{
-			FileWriteData(text);
+			FileWriteData(result);
 		}
 		if (Menu() == false) // Вызов основного меню после завершения работы программы
 			return false;
