@@ -2,10 +2,14 @@
 
 vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 {
+	int monthAmount = 12;
 	vector<GasData> gotGasData;
 	for (int i = 0; i < text.size(); i++)
 	{
-		GasData gotData = GasData{ -2,-2,-2,"-2",-2,-2,-2,-2,-1,-1,-1,-1,-1 };
+		GasData gotData = GasData{ (int)dataNotSet,(int)dataNotSet,(int)dataNotSet,
+			to_string(dataNotSet),(int)dataNotSet,dataNotSet,dataNotSet,
+			dataNotSet,(int)dataUnknown,dataUnknown,dataUnknown,
+			dataUnknown,dataUnknown };
 
 		string currentNote = "";
 		text[i].push_back(' ');
@@ -25,63 +29,63 @@ vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 				{
 					try
 					{
-						if (gotData.year == -2)
+						if (gotData.year == dataNotSet)
 						{
 							gotData.year = stoi(currentNote);
 							currentNote = "";
-							if (gotData.year != -1 && gotData.year <= 0)
+							if (gotData.year != (int)dataUnknown && gotData.year <= numZero)
 							{
 								*isIncorrectData = true;
 								cout << "Год не может быть отрицательным либо нулевым (для неопределенного значения используйте -1)" << endl;
 								break;
 							}
 						}
-						else if (gotData.month == -2)
+						else if (gotData.month == dataNotSet)
 						{
 							gotData.month = stoi(currentNote);
 							currentNote = "";
-							if (gotData.month != -1 && (gotData.month <= 0 || gotData.month > 12))
+							if (gotData.month != (int)dataUnknown && (gotData.month <= numZero || gotData.month > monthAmount))
 							{
 								*isIncorrectData = true;
 								cout << "Значение месяца некорректно (для неопределенного значения используйте -1)" << endl;
 								break;
 							}
 						}
-						else if (gotData.day == -2)
+						else if (gotData.day == dataNotSet)
 						{
 							gotData.day = stoi(currentNote);
 							currentNote = "";
-							int daysInMonth = -1;
-							int daysInYear = -1;
+							int daysInMonth = (int)dataUnknown;
+							int daysInYear = (int)dataUnknown;
 							checkDateNumbers(gotData.year, gotData.month, &daysInMonth, &daysInYear);
-							if (gotData.day != -1 && (gotData.day <= 0 || gotData.day > daysInMonth))
+							if (gotData.day != (int)dataUnknown && (gotData.day <= numZero || gotData.day > daysInMonth))
 							{
 								*isIncorrectData = true;
 								cout << "Значение дня некорректно (для неопределенного значения используйте -1)" << endl;
 								break;
 							}
 						}
-						else if (gotData.gas_brand == "-2")
+						else if (gotData.gas_brand == to_string(dataNotSet))
 						{
 							gotData.gas_brand = currentNote;
 							currentNote = "";
 						}
-						else if (gotData.mileage == -2)
+						else if (gotData.mileage == dataNotSet)
 						{
 							gotData.mileage = stoi(currentNote);
 							currentNote = "";
 						}
-						else if (gotData.gallonPrice == -2)
+						else if (gotData.gallonPrice == dataNotSet)
 						{
 							gotData.gallonPrice = stod(currentNote);
 							currentNote = "";
 						}
-						else if (gotData.gallonQuantity == -2)
+						else if (gotData.gallonQuantity == dataNotSet)
 						{
 							gotData.gallonQuantity = stod(currentNote);
 							currentNote = "";
 						}
-						else if (gotData.totalSum == -2)
+						else if (gotData.totalSum == dataNotSet)
 						{
 							gotData.totalSum = stod(currentNote);
 							currentNote = "";
@@ -100,14 +104,14 @@ vector<GasData> getGasDataFromText(vector<string> text, bool* isIncorrectData)
 
 	for (auto element : gotGasData)
 	{
-		if (element.year == -2
-			|| element.month == -2
-			|| element.day == -2
-			|| element.gas_brand == "-2"
-			|| element.mileage == -2
-			|| element.gallonPrice == -2
-			|| element.gallonQuantity == -2
-			|| element.totalSum == -2)
+		if (element.year == dataNotSet
+			|| element.month == dataNotSet
+			|| element.day == dataNotSet
+			|| element.gas_brand == to_string(dataNotSet)
+			|| element.mileage == dataNotSet
+			|| element.gallonPrice == dataNotSet
+			|| element.gallonQuantity == dataNotSet
+			|| element.totalSum == dataNotSet)
 		{
 			*isIncorrectData = true;
 			cout << "Полученные данные некорректны. Пожалуйста, попробуйте еще раз." << endl
@@ -154,7 +158,7 @@ vector<GasData> textInputFile()
 				text.push_back(buffer);
 		}
 		fin.close();
-		while (text.size() == 0) {
+		while (text.size() == numZero) {
 			cout << "Данный файл не содержит текст. Пожалуйста попробуйте еще раз." << endl;
 			cout << "Введите путь к файлу:" << endl;
 			cin >> path;

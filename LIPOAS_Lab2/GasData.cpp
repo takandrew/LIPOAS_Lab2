@@ -3,39 +3,105 @@
 vector<GasData> createStarterPackOfData()
 {
 	vector<GasData> dataVector;
-	GasData record1 = GasData{ 1974, 3, 27, "Texaco", 24370, 59.9, 13.5, 8.00, -1, -1, -1, -1, -1 };
-	GasData record2 = GasData{ 1974, 4, 5, "Texaco", 24434, 59.9, 5.5, 3.30, -1, -1, -1, -1, -1 };
-	GasData record3 = GasData{ 1974, 4, 11, "Texaco", 24596, 59.9, 8.2, 4.88, -1, -1, -1, -1, -1 };
-	GasData record4 = GasData{ 1974, 4, 23, "Mobil", 24862, 58.8, 12.9, 7.60, -1, -1, -1, -1, -1 };
-	GasData record5 = GasData{ 1974, 5, 13, "Mobil", 25057, 61.9, 13.9, 8.60, -1, -1, -1, -1, -1 };
-	GasData record6 = GasData{ 1974, 6, 11, "Arco", 25239, 62.9, 12.5, 7.85, -1, -1, -1, -1, -1 };
-	GasData record7 = GasData{ 1974, 7, 12, "Texaco", 25435, 63.3, 14.2, 8.90, -1, -1, -1, -1, -1 };
-	GasData record8 = GasData{ 1974, 7, 19, "Chevron", 25713, 58.8, 12.4, 7.27, -1, -1, -1, -1, -1 };
-	GasData record9 = GasData{ 1974, 7, 28, "Arco", 26135, 60.9, 14.1, 8.60, -1, -1, -1, -1, -1 };
-	GasData record10 = GasData{ 1974, 8, 7, "Mobil", 26384, 60.4, 13.1, 8.00, -1, -1, -1, -1, -1 };
-	GasData record11 = GasData{ 1974, 8, 8, "Shell", 26712, 59.9, 13.3, 7.90, -1, -1, -1, -1, -1 };
-	GasData record12 = GasData{ 1974, 8, 16, "Shell", 26997, 60.9, 13.6, 8.30, -1, -1, -1, -1, -1 };
-	GasData record13 = GasData{ 1974, 8, 22, "Ericson", 27068, 60.9, 4.0, 2.45, -1, -1, -1, -1, -1 };
-	GasData record14 = GasData{ 1974, 8, 22, "American", 27362, 61.6, 11.8, 7.25, -1, -1, -1, -1, -1 };
-	GasData record15 = GasData{ 1974, 8, 23, "American", 27606, 63.4, 10.3, 6.54, -1, -1, -1, -1, -1 };
-	GasData record16 = GasData{ 1974, 8, 25, "DX", 27913, 60.9, 13.6, 8.29, -1, -1, -1, -1, -1 };
-	GasData record17 = GasData{ 1974, 8, 26, "Conoco", 28163, 60.9, 10.8, 6.55, -1, -1, -1, -1, -1 };
-	GasData record18 = GasData{ 1974, 8, 26, "Texaco", 28487, 57.9, 14.0, 8.10, -1, -1, -1, -1, -1 };
-	GasData record19 = GasData{ 1974, 8, 27, "Phillips", 28771, 53.9, 12.2, 6.60, -1, -1, -1, -1, -1 };
-	GasData record20 = GasData{ 1974, 8, 28, "Chevron", 29114, 59.9, 14.8, 8.90, -1, -1, -1, -1, -1 };
-	GasData record21 = GasData{ 1974, 8, 28, "Shell", 29337, 58.9, 10.2, 6.00, -1, -1, -1, -1, -1 };
-	GasData record22 = GasData{ 1974, 8, 28, "Texaco", 29661, 60.9, 13.9, 8.35, -1, -1, -1, -1, -1 };
-	GasData record23 = GasData{ 1974, 8, 29, "Exxon", 29912, 65.9, 10.8, 7.10, -1, -1, -1, -1, -1 };
-	GasData record24 = GasData{ 1974, 8, 29, "Shell", 30147, 65.9, 10.3, 6.70, -1, -1, -1, -1, -1 };
-	GasData record25 = GasData{ 1974, 8, 30, "Texaco", 30317, 60.9, 7.6, 4.60, -1, -1, -1, -1, -1 };
-	GasData record26 = GasData{ 1974, 8, 31, "Exxon", 30643, 56.9, 13.3, 7.60, -1, -1, -1, -1, -1 };
-	GasData record27 = GasData{ 1974, 9, 06, "Shell", 30878, 59.9, 13.2, 7.90, -1, -1, -1, -1, -1 };
-	GasData record28 = GasData{ 1974, 9, 10, "Shell", 31182, 59.9, 13.0, 7.80, -1, -1, -1, -1, -1 };
-	GasData record29 = GasData{ 1974, 9, 14, "Texaco", 31467, 57.9, 13.1, 7.60, -1, -1, -1, -1, -1 };
-	GasData record30 = GasData{ 1974, 9, 18, "Arco", 31711, 57.9, 10.1, 5.85, -1, -1, -1, -1, -1 };
-	GasData record31 = GasData{ 1974, 9, 24, "Arco", 31984, 57.9, 12.5, 7.25, -1, -1, -1, -1, -1 };
-	GasData record32 = GasData{ 1974, 9, 27, "Arco", 32225, 57.9, 9.9, 5.70, -1, -1, -1, -1, -1 };
-	GasData record33 = GasData{ 1974, 10, 1, "Arco", 32455, 57.9, 9.8, 5.65, -1, -1, -1, -1, -1 };
+	GasData record1 = GasData{ 1974, 3, 27, "Texaco", 24370, 59.9,
+		13.5, 8.00, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record2 = GasData{ 1974, 4, 5, "Texaco", 24434, 59.9,
+		5.5, 3.30, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record3 = GasData{ 1974, 4, 11, "Texaco", 24596, 59.9,
+		8.2, 4.88, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record4 = GasData{ 1974, 4, 23, "Mobil", 24862, 58.8,
+		12.9, 7.60, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record5 = GasData{ 1974, 5, 13, "Mobil", 25057, 61.9,
+		13.9, 8.60, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record6 = GasData{ 1974, 6, 11, "Arco", 25239, 62.9,
+		12.5, 7.85, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record7 = GasData{ 1974, 7, 12, "Texaco", 25435, 63.3,
+		14.2, 8.90, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record8 = GasData{ 1974, 7, 19, "Chevron", 25713, 58.8,
+		12.4, 7.27, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record9 = GasData{ 1974, 7, 28, "Arco", 26135, 60.9,
+		14.1, 8.60, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record10 = GasData{ 1974, 8, 7, "Mobil", 26384, 60.4,
+		13.1, 8.00, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record11 = GasData{ 1974, 8, 8, "Shell", 26712, 59.9,
+		13.3, 7.90, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record12 = GasData{ 1974, 8, 16, "Shell", 26997, 60.9,
+		13.6, 8.30, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record13 = GasData{ 1974, 8, 22, "Ericson", 27068, 60.9,
+		4.0, 2.45, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record14 = GasData{ 1974, 8, 22, "American", 27362, 61.6,
+		11.8, 7.25, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record15 = GasData{ 1974, 8, 23, "American", 27606, 63.4,
+		10.3, 6.54, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record16 = GasData{ 1974, 8, 25, "DX", 27913, 60.9,
+		13.6, 8.29, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record17 = GasData{ 1974, 8, 26, "Conoco", 28163, 60.9,
+		10.8, 6.55, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record18 = GasData{ 1974, 8, 26, "Texaco", 28487, 57.9,
+		14.0, 8.10, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record19 = GasData{ 1974, 8, 27, "Phillips", 28771, 53.9,
+		12.2, 6.60, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record20 = GasData{ 1974, 8, 28, "Chevron", 29114, 59.9,
+		14.8, 8.90, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record21 = GasData{ 1974, 8, 28, "Shell", 29337, 58.9,
+		10.2, 6.00, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record22 = GasData{ 1974, 8, 28, "Texaco", 29661, 60.9,
+		13.9, 8.35, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record23 = GasData{ 1974, 8, 29, "Exxon", 29912, 65.9,
+		10.8, 7.10, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record24 = GasData{ 1974, 8, 29, "Shell", 30147, 65.9,
+		10.3, 6.70, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record25 = GasData{ 1974, 8, 30, "Texaco", 30317, 60.9,
+		7.6, 4.60, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record26 = GasData{ 1974, 8, 31, "Exxon", 30643, 56.9,
+		13.3, 7.60, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record27 = GasData{ 1974, 9, 06, "Shell", 30878, 59.9,
+		13.2, 7.90, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record28 = GasData{ 1974, 9, 10, "Shell", 31182, 59.9,
+		13.0, 7.80, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record29 = GasData{ 1974, 9, 14, "Texaco", 31467, 57.9,
+		13.1, 7.60, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record30 = GasData{ 1974, 9, 18, "Arco", 31711, 57.9,
+		10.1, 5.85, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record31 = GasData{ 1974, 9, 24, "Arco", 31984, 57.9,
+		12.5, 7.25, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record32 = GasData{ 1974, 9, 27, "Arco", 32225, 57.9,
+		9.9, 5.70, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
+	GasData record33 = GasData{ 1974, 10, 1, "Arco", 32455, 57.9,
+		9.8, 5.65, (int)dataUnknown, dataUnknown,
+		dataUnknown, dataUnknown, dataUnknown };
 
 	dataVector.push_back(record1);
 	dataVector.push_back(record2);
@@ -147,7 +213,9 @@ vector<string> GetTextFromGasData(vector<GasData> gotGasData)
 vector<GasData> processAvgData(vector<GasData> gotGasData, int neededYear, int neededMonth)
 {
 	vector<GasData> avgData;
-	GasData zeroData = GasData{ 0,0,0,"",0,0,0,0,0,0,0,0,0 };
+	GasData zeroData = GasData{ numZero,numZero,numZero,"",numZero,(double)numZero,
+		(double)numZero,(double)numZero,numZero,(double)numZero,(double)numZero,
+		(double)numZero,(double)numZero };
 	avgData.push_back(zeroData);
 	avgData.push_back(zeroData);
 	for (int i = 0; i < avgData.size(); i++)
@@ -155,33 +223,33 @@ vector<GasData> processAvgData(vector<GasData> gotGasData, int neededYear, int n
 		int counter = 0;
 		for (int j = 0; j < gotGasData.size(); j++)
 		{
-			if (i == 0)
+			if (i == numZero)
 			{
 				if (gotGasData[j].year == neededYear && gotGasData[j].month == neededMonth)
 				{
-					avgData[i].mileage += gotGasData[j].mileage != -1 ? gotGasData[j].mileage : 0;
-					avgData[i].gallonPrice += gotGasData[j].gallonPrice != -1 ? gotGasData[j].gallonPrice : 0;
-					avgData[i].gallonQuantity += gotGasData[j].gallonQuantity != -1 ? gotGasData[j].gallonQuantity : 0;
-					avgData[i].totalSum += gotGasData[j].totalSum != -1 ? gotGasData[j].totalSum : 0;
-					avgData[i].mileageBtwnFillings += gotGasData[j].mileageBtwnFillings != -1 ? gotGasData[j].mileageBtwnFillings : 0;
-					avgData[i].mileagePerGallon += gotGasData[j].mileagePerGallon != -1 ? gotGasData[j].mileagePerGallon : 0;
-					avgData[i].mileagePrice += gotGasData[j].mileagePrice != -1 ? gotGasData[j].mileagePrice : 0;
-					avgData[i].dayPrice += gotGasData[j].dayPrice != -1 ? gotGasData[j].dayPrice : 0;
-					avgData[i].gallonTimeInDays += gotGasData[j].gallonTimeInDays != -1 ? gotGasData[j].gallonTimeInDays : 0;
+					avgData[i].mileage += gotGasData[j].mileage != dataUnknown ? gotGasData[j].mileage : numZero;
+					avgData[i].gallonPrice += gotGasData[j].gallonPrice != dataUnknown ? gotGasData[j].gallonPrice : numZero;
+					avgData[i].gallonQuantity += gotGasData[j].gallonQuantity != dataUnknown ? gotGasData[j].gallonQuantity : numZero;
+					avgData[i].totalSum += gotGasData[j].totalSum != dataUnknown ? gotGasData[j].totalSum : numZero;
+					avgData[i].mileageBtwnFillings += gotGasData[j].mileageBtwnFillings != dataUnknown ? gotGasData[j].mileageBtwnFillings : numZero;
+					avgData[i].mileagePerGallon += gotGasData[j].mileagePerGallon != dataUnknown ? gotGasData[j].mileagePerGallon : numZero;
+					avgData[i].mileagePrice += gotGasData[j].mileagePrice != dataUnknown ? gotGasData[j].mileagePrice : numZero;
+					avgData[i].dayPrice += gotGasData[j].dayPrice != dataUnknown ? gotGasData[j].dayPrice : numZero;
+					avgData[i].gallonTimeInDays += gotGasData[j].gallonTimeInDays != dataUnknown ? gotGasData[j].gallonTimeInDays : numZero;
 					counter++;
 				}
 			}
 			else
 			{
-				avgData[i].mileage += gotGasData[j].mileage != -1 ? gotGasData[j].mileage : 0;
-				avgData[i].gallonPrice += gotGasData[j].gallonPrice != -1 ? gotGasData[j].gallonPrice : 0;
-				avgData[i].gallonQuantity += gotGasData[j].gallonQuantity != -1 ? gotGasData[j].gallonQuantity : 0;
-				avgData[i].totalSum += gotGasData[j].totalSum != -1 ? gotGasData[j].totalSum : 0;
-				avgData[i].mileageBtwnFillings += gotGasData[j].mileageBtwnFillings != -1 ? gotGasData[j].mileageBtwnFillings : 0;
-				avgData[i].mileagePerGallon += gotGasData[j].mileagePerGallon != -1 ? gotGasData[j].mileagePerGallon : 0;
-				avgData[i].mileagePrice += gotGasData[j].mileagePrice != -1 ? gotGasData[j].mileagePrice : 0;
-				avgData[i].dayPrice += gotGasData[j].dayPrice != -1 ? gotGasData[j].dayPrice : 0;
-				avgData[i].gallonTimeInDays += gotGasData[j].gallonTimeInDays != -1 ? gotGasData[j].gallonTimeInDays : 0;
+				avgData[i].mileage += gotGasData[j].mileage != dataUnknown ? gotGasData[j].mileage : numZero;
+				avgData[i].gallonPrice += gotGasData[j].gallonPrice != dataUnknown ? gotGasData[j].gallonPrice : numZero;
+				avgData[i].gallonQuantity += gotGasData[j].gallonQuantity != dataUnknown ? gotGasData[j].gallonQuantity : numZero;
+				avgData[i].totalSum += gotGasData[j].totalSum != dataUnknown ? gotGasData[j].totalSum : numZero;
+				avgData[i].mileageBtwnFillings += gotGasData[j].mileageBtwnFillings != dataUnknown ? gotGasData[j].mileageBtwnFillings : numZero;
+				avgData[i].mileagePerGallon += gotGasData[j].mileagePerGallon != dataUnknown ? gotGasData[j].mileagePerGallon : numZero;
+				avgData[i].mileagePrice += gotGasData[j].mileagePrice != dataUnknown ? gotGasData[j].mileagePrice : numZero;
+				avgData[i].dayPrice += gotGasData[j].dayPrice != dataUnknown ? gotGasData[j].dayPrice : numZero;
+				avgData[i].gallonTimeInDays += gotGasData[j].gallonTimeInDays != dataUnknown ? gotGasData[j].gallonTimeInDays : numZero;
 				counter++;
 			}
 		}
@@ -202,13 +270,14 @@ vector<GasData> processAvgData(vector<GasData> gotGasData, int neededYear, int n
 			avgData[i].dayPrice /= counter;
 			avgData[i].gallonTimeInDays /= counter;
 
-			avgData[i].gallonPrice = round_up(avgData[i].gallonPrice, 2);
-			avgData[i].gallonQuantity = round_up(avgData[i].gallonQuantity, 2);
-			avgData[i].totalSum = round_up(avgData[i].totalSum, 2);
-			avgData[i].mileagePerGallon = round_up(avgData[i].mileagePerGallon, 2);
-			avgData[i].mileagePrice = round_up(avgData[i].mileagePrice, 2);
-			avgData[i].dayPrice = round_up(avgData[i].dayPrice, 2);
-			avgData[i].gallonTimeInDays = round_up(avgData[i].gallonTimeInDays, 2);
+			int roundNum = 2;
+			avgData[i].gallonPrice = round_up(avgData[i].gallonPrice, roundNum);
+			avgData[i].gallonQuantity = round_up(avgData[i].gallonQuantity, roundNum);
+			avgData[i].totalSum = round_up(avgData[i].totalSum, roundNum);
+			avgData[i].mileagePerGallon = round_up(avgData[i].mileagePerGallon, roundNum);
+			avgData[i].mileagePrice = round_up(avgData[i].mileagePrice, roundNum);
+			avgData[i].dayPrice = round_up(avgData[i].dayPrice, roundNum);
+			avgData[i].gallonTimeInDays = round_up(avgData[i].gallonTimeInDays, roundNum);
 		}
 	}
 	
@@ -220,7 +289,7 @@ vector<GasData> processGasData(vector<GasData> gotGasData)
 {
 	for (int i = 0; i < gotGasData.size(); i++)
 	{
-		if (i == 0)
+		if (i == numZero)
 		{
 			if (gotGasData.size() == 1)
 				break;
@@ -292,9 +361,9 @@ void printTable(vector<GasData> gotGasData)
 
 	for (int j = 0; j < gotGasData.size(); j++)
 	{
-		string printedYear = gotGasData[j].year != 0 ? std::to_string(gotGasData[j].year) : "   -";
-		string printedMonth = gotGasData[j].month != 0 ? std::to_string(gotGasData[j].month) : "-";
-		string printedDay = gotGasData[j].day != 0 ? std::to_string(gotGasData[j].day) : "-";
+		string printedYear = gotGasData[j].year != numZero ? std::to_string(gotGasData[j].year) : "   -";
+		string printedMonth = gotGasData[j].month != numZero ? std::to_string(gotGasData[j].month) : "-";
+		string printedDay = gotGasData[j].day != numZero ? std::to_string(gotGasData[j].day) : "-";
 
 		cout << printedYear << setw(maxColSize / 2) <<
 			printedMonth << setw(maxColSize / 2) <<
@@ -329,7 +398,9 @@ vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 	vector<GasData> brandAvgValues;
 	for (auto element : BrandNames)
 	{
-		GasData record = GasData{ 0, 0, 0, element, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		GasData record = GasData{ numZero, numZero, numZero, element, numZero, numZero,
+			numZero, numZero, numZero, numZero,
+			numZero, numZero, numZero };
 		brandAvgValues.push_back(record);
 	}
 
@@ -341,15 +412,15 @@ vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 		{
 			if (brandAvgValues[i].gas_brand == gotGasData[j].gas_brand)
 			{
-				brandAvgValues[i].mileage += gotGasData[j].mileage != -1 ? gotGasData[j].mileage : 0;
-				brandAvgValues[i].gallonPrice += gotGasData[j].gallonPrice != -1 ? gotGasData[j].gallonPrice : 0;
-				brandAvgValues[i].gallonQuantity += gotGasData[j].gallonQuantity != -1 ? gotGasData[j].gallonQuantity : 0;
-				brandAvgValues[i].totalSum += gotGasData[j].totalSum != -1 ? gotGasData[j].totalSum : 0;
-				brandAvgValues[i].mileageBtwnFillings += gotGasData[j].mileageBtwnFillings != -1 ? gotGasData[j].mileageBtwnFillings : 0;
-				brandAvgValues[i].mileagePerGallon += gotGasData[j].mileagePerGallon != -1 ? gotGasData[j].mileagePerGallon : 0;
-				brandAvgValues[i].mileagePrice += gotGasData[j].mileagePrice != -1 ? gotGasData[j].mileagePrice : 0;
-				brandAvgValues[i].dayPrice += gotGasData[j].dayPrice != -1 ? gotGasData[j].dayPrice : 0;
-				brandAvgValues[i].gallonTimeInDays += gotGasData[j].gallonTimeInDays != -1 ? gotGasData[j].gallonTimeInDays : 0;
+				brandAvgValues[i].mileage += gotGasData[j].mileage != dataUnknown ? gotGasData[j].mileage : numZero;
+				brandAvgValues[i].gallonPrice += gotGasData[j].gallonPrice != dataUnknown ? gotGasData[j].gallonPrice : numZero;
+				brandAvgValues[i].gallonQuantity += gotGasData[j].gallonQuantity != dataUnknown ? gotGasData[j].gallonQuantity : numZero;
+				brandAvgValues[i].totalSum += gotGasData[j].totalSum != dataUnknown ? gotGasData[j].totalSum : numZero;
+				brandAvgValues[i].mileageBtwnFillings += gotGasData[j].mileageBtwnFillings != dataUnknown ? gotGasData[j].mileageBtwnFillings : numZero;
+				brandAvgValues[i].mileagePerGallon += gotGasData[j].mileagePerGallon != dataUnknown ? gotGasData[j].mileagePerGallon : numZero;
+				brandAvgValues[i].mileagePrice += gotGasData[j].mileagePrice != dataUnknown ? gotGasData[j].mileagePrice : numZero;
+				brandAvgValues[i].dayPrice += gotGasData[j].dayPrice != dataUnknown ? gotGasData[j].dayPrice : numZero;
+				brandAvgValues[i].gallonTimeInDays += gotGasData[j].gallonTimeInDays != dataUnknown ? gotGasData[j].gallonTimeInDays : numZero;
 				counter++;
 			}
 		}
@@ -366,13 +437,14 @@ vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 			brandAvgValues[i].dayPrice /= counter;
 			brandAvgValues[i].gallonTimeInDays /= counter;
 
-			brandAvgValues[i].gallonPrice = round_up(brandAvgValues[i].gallonPrice, 2);
-			brandAvgValues[i].gallonQuantity = round_up(brandAvgValues[i].gallonQuantity, 2);
-			brandAvgValues[i].totalSum = round_up(brandAvgValues[i].totalSum, 2);
-			brandAvgValues[i].mileagePerGallon = round_up(brandAvgValues[i].mileagePerGallon, 2);
-			brandAvgValues[i].mileagePrice = round_up(brandAvgValues[i].mileagePrice, 2);
-			brandAvgValues[i].dayPrice = round_up(brandAvgValues[i].dayPrice, 2);
-			brandAvgValues[i].gallonTimeInDays = round_up(brandAvgValues[i].gallonTimeInDays, 2);
+			int roundNum = 2;
+			brandAvgValues[i].gallonPrice = round_up(brandAvgValues[i].gallonPrice, roundNum);
+			brandAvgValues[i].gallonQuantity = round_up(brandAvgValues[i].gallonQuantity, roundNum);
+			brandAvgValues[i].totalSum = round_up(brandAvgValues[i].totalSum, roundNum);
+			brandAvgValues[i].mileagePerGallon = round_up(brandAvgValues[i].mileagePerGallon, roundNum);
+			brandAvgValues[i].mileagePrice = round_up(brandAvgValues[i].mileagePrice, roundNum);
+			brandAvgValues[i].dayPrice = round_up(brandAvgValues[i].dayPrice, roundNum);
+			brandAvgValues[i].gallonTimeInDays = round_up(brandAvgValues[i].gallonTimeInDays, roundNum);
 		}
 	}
 	return brandAvgValues;
@@ -380,15 +452,15 @@ vector<GasData> getBrandAvgValues(vector<GasData> gotGasData)
 
 vector<string> FullGasDataProcess(vector<GasData> gasData, bool needCout)
 {
-	int neededYear = -1;
-	int neededMonth = -1;
+	int neededYear = (int)dataUnknown;
+	int neededMonth = (int)dataUnknown;
 	bool isDateIncorrect = true;
 	while (isDateIncorrect)
 	{
 		cout << "Введите год и месяц, данные которых необходимо усреднить:" << endl;
 		cout << "Введите год:" << endl;
 		neededYear = NumInInt();
-		if (neededYear <= 0)
+		if (neededYear <= numZero)
 		{
 			isDateIncorrect = true;
 			cout << endl << "Год введен некорректно. Пожалуйста, введите данные заново" << endl;
@@ -396,7 +468,8 @@ vector<string> FullGasDataProcess(vector<GasData> gasData, bool needCout)
 		}
 		cout << "Введите месяц" << endl;
 		neededMonth = NumInInt();
-		if (neededMonth <= 0 || neededMonth > 12)
+		int monthAmount = 12;
+		if (neededMonth <= numZero || neededMonth > monthAmount)
 		{
 			isDateIncorrect = true;
 			cout << endl << "Месяц введен некорректно. Пожалуйста, введите данные заново" << endl;

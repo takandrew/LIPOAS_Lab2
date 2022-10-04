@@ -8,6 +8,9 @@
 #include <cmath>
 using namespace std;
 
+const double dataUnknown = -1;
+const int numZero = 0;
+
 class GasData
 {
 public:
