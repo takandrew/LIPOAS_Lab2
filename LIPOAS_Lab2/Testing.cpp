@@ -47,12 +47,12 @@ void Testing()
 	// Тестирование модуля вычисления числа дней в месяце и году
 	int testYearFirst = 1974, testMonthFirst = 2;
 	int daysInMonthFirst = 28, daysinYearFirst = 365;
-	int testDaysInMonthFirst = dataUnknown, testDaysInYearFirst = dataUnknown;
+	int testDaysInMonthFirst = (int)dataUnknown, testDaysInYearFirst = (int)dataUnknown;
 	checkDateNumbers(testYearFirst, testMonthFirst, &testDaysInMonthFirst, &testDaysInYearFirst);
 
 	int testYearSecond = 1976, testMonthSecond = 2;
 	int daysInMonthSecond = 29, daysinYearSecond = 366;
-	int testDaysInMonthSecond = dataUnknown, testDaysInYearSecond = dataUnknown;
+	int testDaysInMonthSecond = (int)dataUnknown, testDaysInYearSecond = (int)dataUnknown;
 	checkDateNumbers(testYearSecond, testMonthSecond, &testDaysInMonthSecond, &testDaysInYearSecond);
 
 	if (!(daysInMonthFirst == testDaysInMonthFirst && daysinYearFirst == testDaysInYearFirst) ||
